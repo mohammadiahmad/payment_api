@@ -1,5 +1,6 @@
 from Setting import PaymentGatewayStatus
 
+
 class CheapPaymentGateway:
     def __init__(self):
         self.is_available = PaymentGatewayStatus.CheapPaymentGateway
