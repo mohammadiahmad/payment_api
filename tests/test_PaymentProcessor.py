@@ -1,4 +1,3 @@
-from Setting import PaymentGatewayStatus
 from PaymentProcessor import PaymentProcessor
 import unittest
 
