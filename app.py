@@ -1,12 +1,14 @@
 from flask import Flask, request, abort, jsonify
 
 from ProcessPaymentInputSchema import ProcessPaymentInputSchema
-from PaymentProcessor import payment_process
+from PaymentProcessor import PaymentProcessor
+
+
 
 app = Flask(__name__)
 
 payment_process_schema = ProcessPaymentInputSchema()
-
+payment_processor=PaymentProcessor()
 
 @app.route('/process-payment', methods=['POST'])
 def process_payment():
@@ -16,7 +18,7 @@ def process_payment():
 
     validated_parameters = payment_process_schema.load(request.get_json())
     try:
-        status = payment_process(validated_parameters)
+        status = payment_processor.payment_process(validated_parameters)
         if status:
             return jsonify({"message": "payment procces success."}), 200
         else:
